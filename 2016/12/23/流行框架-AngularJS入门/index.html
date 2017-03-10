@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="张文涛在 Github 上的个人博客">
+    <meta name="keyword" content="blog">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="WentaoZhang&#39;Blog" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        流行框架-AngularJS入门｜WentaoZhang&#39;Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://shubantime.github.io/2016/12/23/流行框架-AngularJS入门/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="../../../../css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    WentaoZhang&#39;Blog
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">Works</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oijgne1cs.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oijgne1cs.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>流行框架-AngularJS入门</h1>
+                    
+                    <span class="meta">
+                         作者 Wentao Zhang
+                        <span>
+                          日期 2016-12-23
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#AngularJS"
+                           title="AngularJS">AngularJS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            流行框架-AngularJS入门
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="流行框架：Angular入门"><a href="#流行框架：Angular入门" class="headerlink" title="流行框架：Angular入门"></a>流行框架：Angular入门</h1><ul>
+<li><a href="https://www.awesomes.cn/" target="_blank" rel="external">前端框架和库的集合、趋势</a><ul>
+<li>chrome在无法联网时，页面小彩蛋（按空格游戏），是一个canvas的小应用</li>
+<li>react将取代angular，将精力用于趋势产品，学习angular是为切入当下环境</li>
+</ul>
+</li>
+<li>推荐工具（在线编辑器）<ul>
+<li><a href="http://codepen.io/" target="_blank" rel="external">http://codepen.io/</a></li>
+<li><a href="https://jsfiddle.net/" target="_blank" rel="external">https://jsfiddle.net/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-Angular-简介"><a href="#1-Angular-简介" class="headerlink" title="1. Angular 简介"></a>1. Angular 简介</h2><h3 id="1-1-什么是-AngularJS"><a href="#1-1-什么是-AngularJS" class="headerlink" title="1-1 什么是 AngularJS"></a>1-1 什么是 AngularJS</h3><ul>
+<li>一款非常优秀的前端高级 JS 框架<ul>
+<li>最早由 Misko Hevery 等人创建</li>
+<li>2009 年被 Google 公式收购，用于其多款产品</li>
+<li>目前有一个全职的开发团队继续开发和维护这个库</li>
+</ul>
+</li>
+<li>有了这一类框架就可以轻松构建 SPA 应用程序<ul>
+<li>轻松构建 SPA（单一页面应用程序）</li>
+<li>单一页面应用程序：<ul>
+<li>只有一个页面（整个应用的一个载体）</li>
+<li>内容全部是由AJAX方式呈现出啦的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其核心就是通过指令扩展了 HTML，通过表达式绑定数据到 HTML。</li>
+</ul>
+<h3 id="1-2-为什么使用-AngularJS"><a href="#1-2-为什么使用-AngularJS" class="headerlink" title="1-2 为什么使用 AngularJS"></a>1-2 为什么使用 AngularJS</h3><ul>
+<li>更少的代码，实现更强劲的功能</li>
+<li>将一些以前在后台开发中使用的思想带入前端开发</li>
+<li>意义：带领当前市面上的框架走向模式化或者架构化（一场革命）</li>
+</ul>
+<h3 id="1-3-AngularJS-的核心特性"><a href="#1-3-AngularJS-的核心特性" class="headerlink" title="1-3 AngularJS 的核心特性"></a>1-3 AngularJS 的核心特性</h3><ul>
+<li>MVC</li>
+<li>模块化</li>
+<li>自动化双向数据绑定</li>
+<li>指令系统</li>
+</ul>
+<h3 id="1-4-相关链接"><a href="#1-4-相关链接" class="headerlink" title="1-4 相关链接"></a>1-4 相关链接</h3><ul>
+<li><a href="http://www.apjs.net/" target="_blank" rel="external">http://www.apjs.net/</a></li>
+<li><a href="http://www.angularjs.cn/" target="_blank" rel="external">http://www.angularjs.cn/</a></li>
+<li><a href="http://docs.angularjs.cn/api" target="_blank" rel="external">http://docs.angularjs.cn/api</a></li>
+<li><a href="https://material.angularjs.org" target="_blank" rel="external">https://material.angularjs.org</a></li>
+<li><a href="http://angular-ui.github.io/" target="_blank" rel="external">http://angular-ui.github.io/</a></li>
+</ul>
+<h2 id="2-Angular-上手"><a href="#2-Angular-上手" class="headerlink" title="2. Angular 上手"></a>2. Angular 上手</h2><h3 id="2-1-安装-Angular"><a href="#2-1-安装-Angular" class="headerlink" title="2-1 安装 Angular"></a>2-1 安装 Angular</h3><ul>
+<li>下载 Angular.js 的包<ul>
+<li><a href="https://github.com/angular/angular.js/releases" target="_blank" rel="external">下载</a></li>
+</ul>
+</li>
+<li>使用 CDN 上的 Angular.js<ul>
+<li><a href="http://apps.bdimg.com/libs/angular.js/1.4.9/angular.min.js" target="_blank" rel="external">下载</a></li>
+</ul>
+</li>
+<li><p>使用 Bower 安装（不知道包名时，上bower官网搜）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">bower init</div><div class="line">bower install angular</div></pre></td></tr></table></figure>
+</li>
+<li><p>bower安装包太慢问题（用https的协议去访问和下载，而不用bower默认的git协议，对全局的<br>git做如下的配置：）</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">git config --<span class="keyword">global</span> url.<span class="string">"https://"</span>.<span class="keyword">insteadOf</span> git:<span class="comment">//</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 NPM 安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install angular</div></pre></td></tr></table></figure>
+</li>
+<li><p>每种方式安装包，本质都是将angular的库下载到当前文件夹中（npm和bower是一键式操作，不用<br>亲自进行下载、解压操作，通过工具下载还可以让工具管理包，不用自己费心）</p>
+</li>
+<li>CDN的优势（Content Delivery Network）<ul>
+<li>快</li>
+<li>节省自己服务器的带宽压力和流量</li>
+<li>国内有很多提供CDN服务的库，百度、阿里巴巴、新浪等，一般是免费的</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-简单示例"><a href="#2-2-简单示例" class="headerlink" title="2-2 简单示例"></a>2-2 简单示例</h3><ul>
+<li><p>所有需要NG管理的代码必须被包裹在一个有ng-app指令的元素中,np-app是NG的入口，表示当前<br>元素的所有指令都会被angular管理（对每一个指令进行分析和操作）</p>
+<ul>
+<li>ng-app指令告诉AngularJS，<div>元素是AngularJS应用程序管理的边界</div></li>
+<li>ng-model指令把文本框的值绑定到变量name上</li>
+<li>表达式就是把应用程序变量name绑定到某个段落的innerHTML<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span> <span class="attr">ng-init</span>=<span class="string">"user.name='world'"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>使用NG实现双边数据绑定<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入你的姓名"</span> <span class="attr">ng-model</span>=<span class="string">"user.name"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>hello <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;user.name&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>angular中最重要的概念是指令（directive）</p>
+</li>
+<li>ng-model 是双向数据绑定的指令，效果就是将当前元素的value属性和模型中的user.name建<br>立绑定关系</li>
+</ul>
+<h3 id="2-3-分析-Angular-示例"><a href="#2-3-分析-Angular-示例" class="headerlink" title="2-3 分析 Angular 示例"></a>2-3 分析 Angular 示例</h3><ul>
+<li>angular双向数据绑定.png、ng-model.png</li>
+</ul>
+<h3 id="2-4-使用总结"><a href="#2-4-使用总结" class="headerlink" title="2-4 使用总结"></a>2-4 使用总结</h3><ul>
+<li>JS: BOM DOM ES</li>
+<li>Angular最大程度的减少了页面上的DOM操作；<ul>
+<li>让 JavaScript 中专注业务逻辑的代码；</li>
+</ul>
+</li>
+<li>通过简单的指令结合页面结构与逻辑数据；</li>
+<li>通过自定义指令实现组件化编程；</li>
+<li>代码结构更合理；</li>
+<li>维护成本更低；</li>
+<li>Angular解放了传统JavaScript中频繁的DOM操作</li>
+</ul>
+<h3 id="2-5-运行官方文档"><a href="#2-5-运行官方文档" class="headerlink" title="2-5 运行官方文档"></a>2-5 运行官方文档</h3><ul>
+<li>由于众所周知的原因，Angular官网打不开</li>
+<li>我们需要本地运行 Angular 文档<ul>
+<li>下载最新的 Angular 包</li>
+<li>解压后有一个 docs 文件夹</li>
+<li>必须通过 http 服务器访问该文件夹</li>
+<li>可以通过 SublimeServer 或者 http-server 运行</li>
+</ul>
+</li>
+<li>运行操作（npm安装http-server）<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">hs -o -<span class="selector-tag">p</span> 自定义端口号   <span class="comment">// 会自动打开浏览器，默认端口8080</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-Angular-基础概念"><a href="#3-Angular-基础概念" class="headerlink" title="3. Angular 基础概念"></a>3. Angular 基础概念</h2><h3 id="3-1-MVC-思想"><a href="#3-1-MVC-思想" class="headerlink" title="3-1 MVC 思想"></a>3-1 MVC 思想</h3><h4 id="什么是-MVC-思想"><a href="#什么是-MVC-思想" class="headerlink" title="什么是 MVC 思想"></a>什么是 MVC 思想</h4><ul>
+<li>MVC 是一种应用程序的开发思想，不是设计模式<ul>
+<li>主要目的是为了解决应用程序展示结构，业务逻辑之间的紧耦合关系</li>
+<li>使应用程序的组成分为三个部件，每个部件有自己明确的职责，相互之间没有依赖</li>
+</ul>
+</li>
+<li>将应用程序的组成划分为三个部分：Model View Controller<ul>
+<li>控制器的作用就是初始化模型用的；</li>
+<li>模型就是用于存储数据的</li>
+<li>视图用于展现数据</li>
+</ul>
+</li>
+<li>登陆案例<ul>
+<li>模型<ul>
+<li>我们数据库中所有用户的信息</li>
+<li>接受控制器传来的用户名和密码进行校验的业务逻辑并返回true/false</li>
+</ul>
+</li>
+<li>控制器<ul>
+<li>接受用户在界面上填写的用户名和密码</li>
+<li>将用户名和密码交给模型</li>
+</ul>
+</li>
+<li>视图<ul>
+<li>给用户呈现一个表单</li>
+<li>接受用户输入内容，并将其提交给控制器</li>
+<li>根据控制器返回的数据，响应用户页面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-模块化"><a href="#3-2-模块化" class="headerlink" title="3-2 模块化"></a>3-2 模块化</h3><h4 id="模块（Module）"><a href="#模块（Module）" class="headerlink" title="模块（Module）"></a>模块（Module）</h4><ul>
+<li>AngularJS很重要的一个特性就是实现模块化编程，我们可以通过以下方式创建一个模块，对页面进行功能业务上的划分<ul>
+<li>划分应用程序结构</li>
+<li>我们可以通过angular.module创建一个模块</li>
+<li>angular.module方法传递两个参数才是创建模块，一个参数是获取模块</li>
+<li>应用程序里的最小单元</li>
+</ul>
+</li>
+</ul>
+<h4 id="控制器（Controller）"><a href="#控制器（Controller）" class="headerlink" title="控制器（Controller）"></a>控制器（Controller）</h4><ul>
+<li>通过$scope和视图关联</li>
+</ul>
+<h4 id="视图模型（-scope）"><a href="#视图模型（-scope）" class="headerlink" title="视图模型（$scope）"></a>视图模型（$scope）</h4><h3 id="表达式（Expression）"><a href="#表达式（Expression）" class="headerlink" title="表达式（Expression）"></a>表达式（Expression）</h3><h3 id="单向数据绑定"><a href="#单向数据绑定" class="headerlink" title="单向数据绑定"></a>单向数据绑定</h3><h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><h2 id="Angular-指令系统"><a href="#Angular-指令系统" class="headerlink" title="Angular 指令系统"></a>Angular 指令系统</h2>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/12/26/混合APP开发基础/" data-toggle="tooltip" data-placement="top"
+                           title="混合APP开发基础">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/12/23/前端自动化工作流/" data-toggle="tooltip" data-placement="top"
+                           title="前端自动化工作流">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/12/23/流行框架-AngularJS入门/"
+                         data-title="流行框架-AngularJS入门"
+                         data-url="https://shubantime.github.io/2016/12/23/流行框架-AngularJS入门/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#流行框架：Angular入门"><span class="toc-text">流行框架：Angular入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Angular-简介"><span class="toc-text">1. Angular 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-什么是-AngularJS"><span class="toc-text">1-1 什么是 AngularJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-为什么使用-AngularJS"><span class="toc-text">1-2 为什么使用 AngularJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-AngularJS-的核心特性"><span class="toc-text">1-3 AngularJS 的核心特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-相关链接"><span class="toc-text">1-4 相关链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Angular-上手"><span class="toc-text">2. Angular 上手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装-Angular"><span class="toc-text">2-1 安装 Angular</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-简单示例"><span class="toc-text">2-2 简单示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-分析-Angular-示例"><span class="toc-text">2-3 分析 Angular 示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-使用总结"><span class="toc-text">2-4 使用总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-运行官方文档"><span class="toc-text">2-5 运行官方文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Angular-基础概念"><span class="toc-text">3. Angular 基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-MVC-思想"><span class="toc-text">3-1 MVC 思想</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是-MVC-思想"><span class="toc-text">什么是 MVC 思想</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-模块化"><span class="toc-text">3-2 模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模块（Module）"><span class="toc-text">模块（Module）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#控制器（Controller）"><span class="toc-text">控制器（Controller）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#视图模型（-scope）"><span class="toc-text">视图模型（$scope）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表达式（Expression）"><span class="toc-text">表达式（Expression）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单向数据绑定"><span class="toc-text">单向数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向数据绑定"><span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-指令系统"><span class="toc-text">Angular 指令系统</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#AngularJS"
+                           title="AngularJS">AngularJS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://github.com/shubantime">Github</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/happyzwt">博客园</a></li>
+                        
+                        <li><a href="https://www.zhihu.com/people/happyzwt/activities">知乎</a></li>
+                        
+                        <li><a href="https://www.awesomes.cn/">Awesomes</a></li>
+                        
+                        <li><a href="http://www.jianshu.com/users/9f280189e245/timeline">简书</a></li>
+                        
+                        <li><a href="https://gold.xitu.io/user/585d1e93128fe1006de668d7">掘金</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/sanshi/">三生石上</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/TomXu/">TOM</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/rubylouvre/">Ruby&#39;s Louvre</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 't.qq.com/WOZHANGWENTAOAO';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/happyzwt/activities">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/p/1005055734321157/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/shubantime">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WentaoZhang&#39;Blog 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://shubantime.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'happyshuban@163.com';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','ctrl+f','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://oijgne1cs.bkt.clouddn.com/tx2.jpg">
+</body>
+
+</html>

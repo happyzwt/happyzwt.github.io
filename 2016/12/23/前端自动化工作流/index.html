@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="张文涛在 Github 上的个人博客">
+    <meta name="keyword" content="blog">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="WentaoZhang&#39;Blog" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        前端自动化工作流｜WentaoZhang&#39;Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://shubantime.github.io/2016/12/23/前端自动化工作流/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="../../../../css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    WentaoZhang&#39;Blog
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">Works</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oijgne1cs.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oijgne1cs.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>前端自动化工作流</h1>
+                    
+                    <span class="meta">
+                         作者 Wentao Zhang
+                        <span>
+                          日期 2016-12-23
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Node.JS"
+                           title="Node.JS">Node.JS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            前端自动化工作流
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h3 id="构建前端自动化工作流环境"><a href="#构建前端自动化工作流环境" class="headerlink" title="构建前端自动化工作流环境"></a>构建前端自动化工作流环境</h3><ul>
+<li>初衷：DRY–Don’t repeat yourself ! </li>
+<li>开发人员的精力应该用于创造  </li>
+</ul>
+<h3 id="1-1-Node环境"><a href="#1-1-Node环境" class="headerlink" title="1.1 Node环境"></a>1.1 Node环境</h3><h4 id="1-1-1-node-js"><a href="#1-1-1-node-js" class="headerlink" title="1.1.1 node.js"></a>1.1.1 node.js</h4><ul>
+<li>Server side javascript runtime–服务端的js运行时<ul>
+<li>目前js运行在浏览器内核中</li>
+<li>php既是一门脚本语言也是一个运行环境</li>
+</ul>
+</li>
+<li>node.js可理解为js的运行环境，可以在node中运行JS代码<ul>
+<li>JS由ECMAScript、DOM、BOM三部分组成,node中只能运行ECMAScript,无法使用BOM和DOM</li>
+</ul>
+</li>
+<li>node将浏览器JS引擎（chrome的V8引擎）搬到了服务器端，增加了一些提供文件、网络之类操作的API</li>
+<li>node.js内置http服务器（PHP需要Apache才能运行）,十几M的文件并发量超乎想象</li>
+</ul>
+<h4 id="1-1-2-目前有两个分支"><a href="#1-1-2-目前有两个分支" class="headerlink" title="1.1.2 目前有两个分支"></a>1.1.2 目前有两个分支</h4><ul>
+<li>Node.js 0.12.7 官方版本（完美主义者）</li>
+<li>IO.js 是社区的产物，不是官方的(两个编写逻辑和代码一模一样，IO.js有很多<br>新特性，迭代非常快，社区推进很快)  </li>
+<li>15年两者合并，发布了node第一个正式版4.0(后来又分开了)<ul>
+<li>node 5.x==IO.js</li>
+<li>node 4.0==node  </li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-3-nvm（node-version-manager）"><a href="#1-1-3-nvm（node-version-manager）" class="headerlink" title="1.1.3 nvm（node version manager）"></a>1.1.3 nvm（node version manager）</h4><ul>
+<li>因为node版本比较多，开发人员可能依赖很多版本，使用node版本管理工具nvm进行切换node版本 </li>
+<li>Node.js是一个轻内核（本身没有什么功能）的东东，所有的功能都要功能包提供<br>node官方提供了一些最基础的包</li>
+</ul>
+<h4 id="1-1-4-npm（-Node-Package-Manager）"><a href="#1-1-4-npm（-Node-Package-Manager）" class="headerlink" title="1.1.4 npm（ Node Package Manager）"></a>1.1.4 npm（ Node Package Manager）</h4><ul>
+<li>Node应用程序依赖包的管理工具，进行安装卸载更新之类的操作</li>
+<li>常见的包管理工具都有循环依赖的功能，只需记住要什么东西</li>
+<li>安装一个包，默认安装最新稳定版本</li>
+</ul>
+<h3 id="1-2-Node环境搭建"><a href="#1-2-Node环境搭建" class="headerlink" title="1.2 Node环境搭建"></a>1.2 Node环境搭建</h3><ul>
+<li>msi - microsoft installer 微软安装器</li>
+</ul>
+<h4 id="1-2-1-Mac"><a href="#1-2-1-Mac" class="headerlink" title="1.2.1 Mac"></a>1.2.1 Mac</h4><ul>
+<li>安装包的方式<ul>
+<li><a href="https://nodejs.org/dist/v5.5.0/node-v5.5.0.pkg" target="_blank" rel="external">pkg</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-2-Windows"><a href="#1-2-2-Windows" class="headerlink" title="1.2.2 Windows"></a>1.2.2 Windows</h4><ul>
+<li>安装包的方式<ul>
+<li><a href="https://nodejs.org/dist/v5.5.0/node-v5.5.0-x64.msi" target="_blank" rel="external">msi_x64</a></li>
+<li><a href="https://nodejs.org/dist/v5.5.0/node-v5.5.0-x86.msi" target="_blank" rel="external">msi_x86</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-3-环境变量"><a href="#1-2-3-环境变量" class="headerlink" title="1.2.3 环境变量"></a>1.2.3 环境变量</h4><ul>
+<li>环境变量就是操作系统提供的系统级别用于存储变量的地方</li>
+<li>环境变量分为<ul>
+<li>系统变量和用户变量</li>
+<li>系统变量指所用当前系统用户共享的变量</li>
+<li>自己的电脑一般只有一个用户（建议将自己配置的环境变量放在用户变量中，用户变量比较干净）</li>
+</ul>
+</li>
+<li>环境变量的变量名不区分大小写（变量间运行相互引用）</li>
+<li>特殊值：<ul>
+<li>PATH变量（不区分大小写）</li>
+<li>PATH 相当于一个路径的引用（添加到PATH变量中的路径,可以在任何<br>目录下搜索）</li>
+</ul>
+</li>
+<li>命令行（可以用来执行当前目录下的文件）<ul>
+<li>命令（cd :change directory）</li>
+</ul>
+</li>
+<li><p>环境变量配置</p>
+<ul>
+<li>（1）nvm环境变量配置，路径一直到可执行文件nvm.exe和node.exe</li>
+<li>（2）npm环境变量配置，路径一直到Windows命令脚本文件npm.cmd<figure class="highlight taggerscript"><table><tr><td class="code"><pre><div class="line">NVM_HOME=C:<span class="symbol">\D</span>evelop<span class="symbol">\n</span>vm</div><div class="line">NVM_SYMLINK=C:<span class="symbol">\D</span>evelop<span class="symbol">\n</span>odejs</div><div class="line">NPM_HOME=C:<span class="symbol">\D</span>evelop<span class="symbol">\n</span>vm<span class="symbol">\n</span>pm</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将环境变量加入到PATH路径</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><div class="line">PATH=%NVM_HOME%;%NVM_SYMLINK%;%NPM_HOME%</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看命令行所使用的的环境变量</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">set  --<span class="keyword">cmd</span><span class="bash">里敲<span class="built_in">set</span></span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-3-常用命令"><a href="#1-3-常用命令" class="headerlink" title="1.3 常用命令"></a>1.3 常用命令</h3><h4 id="1-3-1-nvm使用"><a href="#1-3-1-nvm使用" class="headerlink" title="1.3.1 nvm使用"></a>1.3.1 nvm使用</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">nvm                             --查看是否安装成功以及版本信息</div><div class="line">nvm ls                          --查看当前已经安装的<span class="keyword">node</span><span class="title">版本（同nvm</span> list）</div><div class="line">nvm use <span class="keyword">node</span><span class="title">版本 [平台架构（32</span>位系统需要写<span class="number">32</span>,<span class="number">64</span>位不用管）]    </div><div class="line">                                --使用对应版本的<span class="keyword">node</span></div><div class="line"><span class="title">nvm</span> install <span class="tag">&lt;version&gt;</span> [arch]    --安装</div><div class="line">nvm uninstall <span class="tag">&lt;version&gt;</span>         --卸载</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">官网</a></p>
+<h4 id="1-3-2-node使用"><a href="#1-3-2-node使用" class="headerlink" title="1.3.2 node使用"></a>1.3.2 node使用</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span>             --查看当前<span class="keyword">node</span><span class="title">版本</span></div></pre></td></tr></table></figure>
+<h4 id="1-3-3-npm使用"><a href="#1-3-3-npm使用" class="headerlink" title="1.3.3 npm使用"></a>1.3.3 npm使用</h4><ul>
+<li>如果官方数据源太慢使用<a href="https://npm.taobao.org/_" target="_blank" rel="external">淘宝NPM镜像</a><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">npm -v                              <span class="comment">--查看当前npm版本</span></div><div class="line">npm <span class="keyword">install</span> xxx -g(全局安装包)      <span class="comment">--一般用于安装工具</span></div><div class="line">npm <span class="keyword">install</span> xxx  <span class="comment">--安装包到项目本地（须联网）项目根目录下多一个node_modules文</span></div><div class="line">件夹，所有下载包全在里面</div><div class="line">npm <span class="keyword">install</span> package_name（<span class="comment">--save会添加项目依赖）--安装对应的包</span></div><div class="line">npm <span class="keyword">uninstall</span> package_name          <span class="comment">--卸载对应的包</span></div><div class="line">npm <span class="keyword">install</span> package_name@版本号     <span class="comment">--安装对应版本的包</span></div><div class="line">npm init （加<span class="comment">--yes参数走默认配置）  --初始化操作，给项目添加一个配置文件</span></div><div class="line">npm <span class="keyword">install</span>                         <span class="comment">--文件被误删，根据依赖自动恢复项目</span></div><div class="line">npm <span class="keyword">install</span> package_name <span class="comment">--save-dev --下载并添加开发依赖</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-3-4-other"><a href="#1-3-4-other" class="headerlink" title="1.3.4 other"></a>1.3.4 other</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">cls         <span class="comment">--清空控制台</span></div><div class="line"><span class="built_in">clear</span>       <span class="comment">--清空控制台（只能在powershell里用）</span></div><div class="line">pwd         <span class="comment">--查看当前所在路径（只能在powershell里用）</span></div><div class="line">mkdir  文件夹名     <span class="comment">--在该目录下创建一个文件夹</span></div></pre></td></tr></table></figure>
+<h3 id="1-4-node用途"><a href="#1-4-node用途" class="headerlink" title="1.4 node用途"></a>1.4 node用途</h3><h4 id="REPL环境（控制台环境）"><a href="#REPL环境（控制台环境）" class="headerlink" title="REPL环境（控制台环境）"></a>REPL环境（控制台环境）</h4><h4 id="1-4-1-开发Web应用程序"><a href="#1-4-1-开发Web应用程序" class="headerlink" title="1.4.1 开发Web应用程序"></a>1.4.1 开发Web应用程序</h4><ul>
+<li>做动态网站</li>
+<li>开发提供数据的服务端API</li>
+</ul>
+<h4 id="1-4-2-前端开发工具基础"><a href="#1-4-2-前端开发工具基础" class="headerlink" title="1.4.2 前端开发工具基础"></a>1.4.2 前端开发工具基础</h4><ul>
+<li>Node.js给前端乃至整个开发行业带来一场工业革命（打破了原始的刀耕火种）</li>
+<li>复习请求与响应<ul>
+<li>客户端发送到服务端的东西称之为请求报文</li>
+<li>服务端返回给客户端的东西称之为响应报文</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-node工具集"><a href="#1-5-node工具集" class="headerlink" title="1.5 node工具集"></a>1.5 node工具集</h3><h4 id="1-5-1-Bower（web应用程序依赖项管理工具）-类似于npm"><a href="#1-5-1-Bower（web应用程序依赖项管理工具）-类似于npm" class="headerlink" title="1.5.1 Bower（web应用程序依赖项管理工具）    类似于npm"></a>1.5.1 Bower（web应用程序依赖项管理工具）    类似于npm</h4><ul>
+<li><a href="http://bower.io/" target="_blank" rel="external">官网</a></li>
+<li>Web sites are made of lots of things — frameworks, libraries, assets, and utilities. Bower manages all these things for you.</li>
+<li>Bower就是用来管理项目中所有的依赖，主要用于Web页面开发时使用的包管理，比如jquery，bootstrap（而npm主要用于引用node的包）</li>
+<li>方便便捷的方式管理包（不推荐，除了安装官方的包还可以安装其他的包）<ul>
+<li>修改npm全局路径，就是在用户目录下添加.npmrc文件（npm config list查看是否配置成功）</li>
+<li>bower的使用需要有git环境<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">npm</span> install -g <span class="keyword">bower </span>// -g:<span class="meta">global</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-5-2-Gulp（当下最流行的自动化工具）"><a href="#1-5-2-Gulp（当下最流行的自动化工具）" class="headerlink" title="1.5.2 Gulp（当下最流行的自动化工具）"></a>1.5.2 Gulp（当下最流行的自动化工具）</h4><ul>
+<li>不再是简简单单的使用HTML+CSS+JavaScript这些简单的技术构建网页应用程序了，我们要提高效率，就必须减少重复的工作，使用less之类预处理的CSS coffeescript<ul>
+<li>提供开发阶段的便利，开发阶段更快捷</li>
+<li>现在的开发行业优质的开发人员是不应该将精力放在这些重复性质的工作上</li>
+</ul>
+</li>
+<li>Gulp就是一种可以自动化完成我们开发过程中大量的重复工作<ul>
+<li>预处理语言的编译</li>
+<li>js css html 压缩混淆</li>
+<li>图片体积优化</li>
+</ul>
+</li>
+<li>除gulp之外还有一些类似的自动化工具，比如grunt<ul>
+<li>what how why</li>
+</ul>
+</li>
+<li>什么是自动化构建工具？<ul>
+<li>自动完成一系列重复的操作：less → css、coffeescript → js、css压缩、js混淆、html压缩、img尺寸优化……</li>
+</ul>
+</li>
+<li>链接：<ul>
+<li><a href="http://gulpjs.com/" target="_blank" rel="external">官网</a></li>
+<li><a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">中文网</a></li>
+</ul>
+</li>
+<li><p>gulp的包既包含工具，也包含一些编程的API</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">gulp -v                  <span class="comment">--测试命令</span></div><div class="line">npm <span class="keyword">install</span> gulp <span class="comment">--save  --初始化 gulp 项目，在本地安装gulp包</span></div><div class="line">npm <span class="keyword">install</span> -g gulp      <span class="comment">--安装 gulp 命令行工具，-g 指的是在全局作用域中安装</span></div><div class="line">npm <span class="keyword">install</span> gulp <span class="comment">--save-dev    --作为项目的开发依赖（devDependencies）安装gulp</span></div><div class="line">创建任务gulpfile.js（文件名固定） <span class="comment">--gulpfile.js 就是gulp的主文件，用于注册任务</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>gulp就是用来机械化的完成重复性质的工作，gulp的机制就是将重复工作抽象成一个个的任务</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">gulp 任务名    <span class="comment">--写完gulpfile.js文件，在命令行执行</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>执行相关任务所需的插件</p>
+<figure class="highlight brainfuck"><table><tr><td class="code"><pre><div class="line"><span class="comment">less→css</span>  <span class="comment">gulp</span><span class="literal">-</span><span class="comment">less</span>     <span class="literal">-</span><span class="literal">-</span><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">gulp</span><span class="literal">-</span><span class="comment">less</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span><span class="literal">-</span><span class="comment">dev</span></div><div class="line"><span class="comment">css压缩</span>   <span class="comment">gulp</span><span class="literal">-</span><span class="comment">cssnano</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">gulp</span><span class="literal">-</span><span class="comment">cssnano</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span><span class="literal">-</span><span class="comment">dev</span></div><div class="line"><span class="comment">文件合并</span>  <span class="comment">gulp</span><span class="literal">-</span><span class="comment">concat</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">gulp</span><span class="literal">-</span><span class="comment">concat</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span><span class="literal">-</span><span class="comment">dev</span></div><div class="line"><span class="comment">浏览器同步测试</span> <span class="comment">browser</span><span class="literal">-</span><span class="comment">sync</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">npm</span> <span class="comment">install</span> <span class="comment">browser</span><span class="literal">-</span><span class="comment">sync</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span><span class="literal">-</span><span class="comment">dev</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>常用插件</p>
+</li>
+<li><a href="https://www.npmjs.com/package/gulp-less" target="_blank" rel="external">编译 Less：gulp-less</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-connect" target="_blank" rel="external">创建本地服务器：gulp-connect</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-concat" target="_blank" rel="external">合并文件：gulp-concat</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-uglify" target="_blank" rel="external">最小化 js 文件：gulp-uglify</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-rename" target="_blank" rel="external">重命名文件：gulp-rename</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank" rel="external">最小化 css 文件：gulp-minify-css</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-minify-html" target="_blank" rel="external">压缩html文件 gulp-minify-html</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-imagemin" target="_blank" rel="external">最小化图像：gulp-imagemin</a></li>
+</ul>
+<h4 id="1-5-3-grunt（和gulp类似）"><a href="#1-5-3-grunt（和gulp类似）" class="headerlink" title="1.5.3 grunt（和gulp类似）"></a>1.5.3 grunt（和gulp类似）</h4><ul>
+<li>百度结合gulp和grunt做了FIS3（重复的轮子太多，抓住轮子与轮子之间的共性）</li>
+<li>grunt的速度比gulp慢，并且grunt在运行过程中会产生一些临时文件。gulp所有的操作都是在内存中完成的，gulp更加好用、更普遍，用法类似</li>
+</ul>
+<h4 id="1-5-4-git（一个分布式源代码管理工具）"><a href="#1-5-4-git（一个分布式源代码管理工具）" class="headerlink" title="1.5.4 git（一个分布式源代码管理工具）"></a>1.5.4 git（一个分布式源代码管理工具）</h4><ul>
+<li>源代码<ul>
+<li>在一个项目中，凡是由开发人员编写的都算是源代码</li>
+</ul>
+</li>
+<li>源代码有必要管理起来？<ul>
+<li>让源代码可以被追溯，主要记录每次变更了什么，谁主导这次变化，人为的维护比较麻烦</li>
+</ul>
+</li>
+<li>源代码管理工具便于大家协同开发</li>
+<li>git<ul>
+<li>GIT是Linux之父当年为了维护管理Linux的源代码写的一个工具</li>
+<li>Git 之前 很多使用 svn vss tfs hs ……</li>
+</ul>
+</li>
+<li>git的环境变量<figure class="highlight ini"><table><tr><td class="code"><pre><div class="line"><span class="attr">GIT_HOME</span>=D:\webtools\Git</div><div class="line"><span class="attr">PATH</span>=%GIT_HOME%\bin;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>-安装GIT</p>
+<pre><code>+ git命令行工具
++ 基于git命令行的一个客户端软件（提供一个界面去管理源代码）
+</code></pre><ul>
+<li>GIT命令操作<ul>
+<li>初始化一个本地GIT仓储</li>
+</ul>
+</li>
+<li><p>git操作本地仓库</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">cd 当前项目目录</div><div class="line">git init    <span class="comment">--初始化一个本地的仓库（就是在本地文件夹中添加了一个.git的文件夹用于记录所有的项目变更信息）</span></div><div class="line">git status  <span class="comment">--查看本地仓储的变更状态（第一次查看，显示的是一坨没有被跟踪的文件）</span></div><div class="line">git status -s   <span class="comment">-- -s 是输出简要的变更日志（A是add的意思）</span></div><div class="line">git add .或<span class="comment">--all   --添加本地暂存（托管）文件（可以将一个没有被跟踪的文件添加到跟踪列表，类似于node_modules这种性质的文件是不应该被跟踪）</span></div><div class="line">在代码库文件夹的根目录添加一个.gitignore文件此文件用于说明忽略的文件有哪些</div><div class="line">        <span class="comment">--添加本地GIT忽略清单文件</span></div><div class="line">git <span class="keyword">commit</span> -m 提交说明    <span class="comment">--提交被托管的文件变化到本地仓储（将本地的变化提交的本地的仓库文件夹归档，般在有了一个小单元的整体变化后再提交）</span></div><div class="line">git diff        <span class="comment">--对比差异（可以用于对比当前状态和版本库中状态的变化）</span></div><div class="line">git <span class="keyword">log</span>         <span class="comment">--提交日志（可以查看提交日志，可以很清楚的查看提交日志）</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard 要回归版本哈希值的前六位   --回归到指定版本</span></div><div class="line">git config <span class="comment">--global user.email "you@example.com"    --设置全局的用户邮箱</span></div><div class="line">git config <span class="comment">--global user.name "Your Name"           --设置全局的用户名</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>git操作远端仓库</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git remote add origin https://github.com/username/xxx  --为仓储添加远端（服务器端）地址</div><div class="line">git remote -v   --查看地址（加-v查看详细地址）</div><div class="line">git push -u origin <span class="keyword">master</span>  <span class="title">--将本地仓储的提交记录推送到远端的master</span>分支（-u是让文件以流的方式上传，速度会更快） （使用git工具时需要输入GitHub的账号和密码，然后自动上传）</div><div class="line">git pull origin <span class="keyword">master</span>  <span class="title">--拉取远端master</span>分支的更新记录到本地</div></pre></td></tr></table></figure>
+</li>
+<li><p>单词</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="attribute">modified</span> 修改</div><div class="line">remote  远端</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-5-4-GitHub（一个著名的git服务提供商）"><a href="#1-5-4-GitHub（一个著名的git服务提供商）" class="headerlink" title="1.5.4 GitHub（一个著名的git服务提供商）"></a>1.5.4 GitHub（一个著名的git服务提供商）</h4><ul>
+<li><a href="https://github.com/" target="_blank" rel="external">官网</a><ul>
+<li>提出社交化编程</li>
+</ul>
+</li>
+<li>git服务器<ul>
+<li>用于同步本地的代码仓库</li>
+<li>git是一个工具，GitHub是一个网站</li>
+<li>“免费”服务，免费服务必须是开源的</li>
+</ul>
+</li>
+<li>gist<ul>
+<li>github上可直接贴小的代码段，可以创建私有的gist，还可以复制对应的链接到网页或博客，以模块的形式载入代码段</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-5-5-在GitHub上搭建自己的博客"><a href="#1-5-5-在GitHub上搭建自己的博客" class="headerlink" title="1.5.5 在GitHub上搭建自己的博客"></a>1.5.5 在GitHub上搭建自己的博客</h4><ul>
+<li><p>命令</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">git branch          <span class="comment">--查看当前仓库的所有分支</span></div><div class="line">git branch 分支名   <span class="comment">--创建新的分支</span></div><div class="line">git checkout 分支名    <span class="comment">--切换到对应的分支</span></div><div class="line">git clone <span class="keyword">https</span>://github.com/username/xxx    <span class="comment">--从远端克隆项目到本地</span></div><div class="line">git branch gh-pages     <span class="comment">--创建可以搭建静态网站的gh-pages分支</span></div><div class="line">git push -u origin gh-pages <span class="comment">--将项目同步到gh-pages分支（输入网址：GitHub用户名.github.io /项目名就可以访问了 项目名区分大小写）</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>绑定域名</p>
+<ul>
+<li>在项目根目录下创建一个叫CNAME的文件，里面写自己的域名</li>
+<li>在DNS上解析，提交CNAME文件，按照自己的域名访问</li>
+</ul>
+</li>
+<li>GitHub上最适合做页面展示，只能展示静态文件</li>
+<li>创建一个名为：GitHub用户名.github.io的仓储，可以直接在master分支提供预览</li>
+<li>hexo+GitHub搭建自己的博客<figure class="highlight verilog"><table><tr><td class="code"><pre><div class="line">hexo serve  --按照提供的地址访问（一般是localhost:<span class="number">4000</span>）</div><div class="line">hexo <span class="keyword">generate</span>   --在本地生成静态页</div></pre></td></tr></table></figure></li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/12/23/流行框架-AngularJS入门/" data-toggle="tooltip" data-placement="top"
+                           title="流行框架-AngularJS入门">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/12/23/前端自动化工作流/"
+                         data-title="前端自动化工作流"
+                         data-url="https://shubantime.github.io/2016/12/23/前端自动化工作流/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建前端自动化工作流环境"><span class="toc-text">构建前端自动化工作流环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Node环境"><span class="toc-text">1.1 Node环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-node-js"><span class="toc-text">1.1.1 node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-目前有两个分支"><span class="toc-text">1.1.2 目前有两个分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-nvm（node-version-manager）"><span class="toc-text">1.1.3 nvm（node version manager）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-npm（-Node-Package-Manager）"><span class="toc-text">1.1.4 npm（ Node Package Manager）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Node环境搭建"><span class="toc-text">1.2 Node环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-Mac"><span class="toc-text">1.2.1 Mac</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-Windows"><span class="toc-text">1.2.2 Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-环境变量"><span class="toc-text">1.2.3 环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-常用命令"><span class="toc-text">1.3 常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-nvm使用"><span class="toc-text">1.3.1 nvm使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-node使用"><span class="toc-text">1.3.2 node使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-npm使用"><span class="toc-text">1.3.3 npm使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-4-other"><span class="toc-text">1.3.4 other</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-node用途"><span class="toc-text">1.4 node用途</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#REPL环境（控制台环境）"><span class="toc-text">REPL环境（控制台环境）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-开发Web应用程序"><span class="toc-text">1.4.1 开发Web应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-前端开发工具基础"><span class="toc-text">1.4.2 前端开发工具基础</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-node工具集"><span class="toc-text">1.5 node工具集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-Bower（web应用程序依赖项管理工具）-类似于npm"><span class="toc-text">1.5.1 Bower（web应用程序依赖项管理工具）    类似于npm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-Gulp（当下最流行的自动化工具）"><span class="toc-text">1.5.2 Gulp（当下最流行的自动化工具）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-grunt（和gulp类似）"><span class="toc-text">1.5.3 grunt（和gulp类似）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-4-git（一个分布式源代码管理工具）"><span class="toc-text">1.5.4 git（一个分布式源代码管理工具）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-4-GitHub（一个著名的git服务提供商）"><span class="toc-text">1.5.4 GitHub（一个著名的git服务提供商）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-5-在GitHub上搭建自己的博客"><span class="toc-text">1.5.5 在GitHub上搭建自己的博客</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Node.JS"
+                           title="Node.JS">Node.JS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://github.com/shubantime">Github</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/happyzwt">博客园</a></li>
+                        
+                        <li><a href="https://www.zhihu.com/people/happyzwt/activities">知乎</a></li>
+                        
+                        <li><a href="https://www.awesomes.cn/">Awesomes</a></li>
+                        
+                        <li><a href="http://www.jianshu.com/users/9f280189e245/timeline">简书</a></li>
+                        
+                        <li><a href="https://gold.xitu.io/user/585d1e93128fe1006de668d7">掘金</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/sanshi/">三生石上</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/TomXu/">TOM</a></li>
+                        
+                        <li><a href="http://www.cnblogs.com/rubylouvre/">Ruby&#39;s Louvre</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 't.qq.com/WOZHANGWENTAOAO';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/happyzwt/activities">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/p/1005055734321157/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/shubantime">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WentaoZhang&#39;Blog 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://shubantime.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'happyshuban@163.com';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','ctrl+f','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://oijgne1cs.bkt.clouddn.com/tx2.jpg">
+</body>
+
+</html>
